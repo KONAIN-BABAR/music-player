@@ -1,1 +1,2 @@
 # music-player
+This project is a simple Spotify UI clone made with HTML, CSS, and JavaScript. It has a homepage with four music cards (Daily Mixes). Clicking a card opens a new screen with more cards and song lists. Songs can be played by clicking, and the player updates with song info. The play/pause button toggles the music, and the volume button switches sound levels. The layout is clean, and you can easily add more mixes or songs.
