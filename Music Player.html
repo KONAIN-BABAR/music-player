@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify UI Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #000;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar p {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .sidebar p:hover {
+      color: #1db954;
+    }
+
+    .main, .artist-view {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .main.active, .artist-view.active {
+      display: block;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 10px;
+      width: 150px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .right-panel {
+      width: 250px;
+      background-color: #000;
+      padding: 20px;
+    }
+
+    .bottom-player {
+      position: absolute;
+      bottom: 0;
+      left: 17%;
+      width: 60%;
+      background-color: #181818;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #333;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .progress {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h3>Your Library</h3>
+    <p onclick="showArtist('main')"> Home</p>
+    <p onclick="showArtist('arijit')">Arijit Singh</p>
+    <p onclick="showArtist('atif')">Atif Aslam</p>
+    <p onclick="showArtist('shreya')">Shreya Goshal</p>
+    <p onclick="showArtist('asim')">Asim Azhar</p>
+  </div>
+
+  <div class="main active" id="main">
+    <h2>Play Music</h2>
+    <div class="card-container">
+      <div class="card"onclick="showArtist('mix1')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT69kbXgwYDwS_6dhgRdRIVHSV2HekIZWDsFQ&s">
+        <p>Daily Mix 1</p>
+      </div>
+
+      <div class="card"onclick="showArtist('mix2')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNSbI_GJaTJiqUdcguBk3CI15Nr009GzlLDQ&s">
+        <p>Daily Mix 2</p>
+      </div>
+
+      <div class="card"onclick="showArtist('mix3')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFmmBYAXFF8JUzd6WU6eM26BpO1DfxGAoJng&s">
+        <p>Daily Mix 3</p>
+      </div>
+
+      <div class="card"onclick="showArtist('mix4')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaf8qa1e6THGUu-Wt0OBOg6id5RniQ_6fylw&s">
+        <p>Daily Mix 4</p>
+      </div>
+    </div>
+  </div>
+
+   <div class="artist-view" id="mix1">
+    <h2> Hit Songs</h2>
+    <div class="card">
+     
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4Fe3G9_qmD6X5bQ62_2xmAvvtwBR5_RpCg&s">
+    </div>
+     <ul>
+      <li onclick="playSong('Tum Hi Ho', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Tum Hi Ho</li>
+      <li onclick="playSong('Channa Mereya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Channa Mereya</li>
+      <li onclick="playSong('Raabta', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Raabta</li>
+      <li onclick="playSong('Kesariya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Kesariya</li>
+      <li onclick="playSong('Ae Dil Hai Mushkil', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5. Ae Dil Hai Mushkil</li>
+</div>
+
+<div class="artist-view" id="mix1">
+    <h2> Hit Songs</h2>
+    <div class="card">
+     
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4Fe3G9_qmD6X5bQ62_2xmAvvtwBR5_RpCg&s">
+    </div>
+     <ul>
+      <li onclick="playSong('Tum Hi Ho', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Tum Hi Ho</li>
+      <li onclick="playSong('Channa Mereya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Channa Mereya</li>
+      <li onclick="playSong('Raabta', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Raabta</li>
+      <li onclick="playSong('Kesariya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Kesariya</li>
+      <li onclick="playSong('Ae Dil Hai Mushkil', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5. Ae Dil Hai Mushkil</li>
+    </ul>
+</div>
+
+<div class="artist-view" id="mix2">
+    <h2> Hit Songs</h2>
+    <div class="card">
+     
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvcj36KPjDra6F1mSmtqvwWesHCP0LSOCktg&s">
+    </div>
+     <ul>
+    <li onclick="playSong('Main Rang Sharbaton Ka.', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Main Rang Sharbaton Ka.</li>
+      <li onclick="playSong('Dil Diyan Gallan', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Dil Diyan Gallan</li>
+      <li onclick="playSong('Be Intehaan', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Be Intehaan</li>
+      <li onclick="playSong('Pehli Nazar Mein', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Pehli Nazar Mein</li>
+      <li onclick="playSong('O Meri Laila ', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5.  O Meri Laila </li>
+    </ul>
+</div>
+
+<div class="artist-view" id="mix3">
+    <h2> Hit Songs</h2>
+    <div class="card">
+     
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWMeXrQzT9Wv3_Cwr-AOxQJDK59geaaZqsRg&s">
+    </div>
+      <ul>
+    <li onclick="playSong('Dola Re Dola', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Dola Re Dola</li>
+      <li onclick="playSong('Sunn Raha Hai', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Sunn Raha Hai</li>
+      <li onclick="playSong('Deewani Mastani', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Deewani Mastani</li>
+      <li onclick="playSong('Saibo', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Saibo</li>
+      <li onclick="playSong('Teri Ore', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5.  Teri Ore </li>
+    </ul>
+</div>
+
+<div class="artist-view" id="mix4">
+    <h2> Hit Songs</h2>
+    <div class="card">
+     
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn-NQKSU9o8gKuTvx-BkeHfAGDtOyStST1xA&s">
+    </div>
+     <ul>
+      <li onclick="playSong('Jo Tu Na Mila', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Jo Tu Na Mila</li>
+      <li onclick="playSong('Tera Woh Pyar', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Tera Woh Pyar</li>
+      <li onclick="playSong('Huling Gabi', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Huling Gabi</li>
+      <li onclick="playSong('Baat ', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Baat </li>
+      <li onclick="playSong('Humraah', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5. Humraah</li>
+    </ul>
+</div>
+
+
+  <div class="artist-view" id="arijit">
+    <h2> Arijit Singh - Songs</h2>
+    <ul>
+      <li onclick="playSong('Tum Hi Ho', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Tum Hi Ho</li>
+      <li onclick="playSong('Channa Mereya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Channa Mereya</li>
+      <li onclick="playSong('Raabta', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Raabta</li>
+      <li onclick="playSong('Kesariya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Kesariya</li>
+      <li onclick="playSong('Ae Dil Hai Mushkil', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5. Ae Dil Hai Mushkil</li>
+      <li onclick="playSong('hir Bhi Tumko Chaahunga', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">6. Phir Bhi Tumko Chaahunga</li>
+      <li onclick="playSong('Tera yaar ho mein', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">7. Tera yaar ho mein</li>
+      <li onclick="playSong('O Maahi', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">8. O Maahi</li>
+      <li onclick="playSong('Chaleya', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">9. Chaleya</li>
+      <li onclick="playSong('Desh mere', 'Arijit Singh', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">10. Desh mere</li>
+    </ul>
+  </div>
+
+  <div class="artist-view" id="atif">
+    <h2> Atif Aslam - Songs</h2>
+    <ul>
+      <li onclick="playSong('Main Rang Sharbaton Ka.', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Main Rang Sharbaton Ka.</li>
+      <li onclick="playSong('Dil Diyan Gallan', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Dil Diyan Gallan</li>
+      <li onclick="playSong('Be Intehaan', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Be Intehaan</li>
+      <li onclick="playSong('Pehli Nazar Mein', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Pehli Nazar Mein</li>
+      <li onclick="playSong('O Meri Laila ', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5.  O Meri Laila </li>
+      <li onclick="playSong('Tu Jaane Na', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">6. Tu Jaane Na</li>
+      <li onclick="playSong('Paniyon Sa', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">7.  Paniyon Sa</li>
+      <li onclick="playSong('Hona Tha Pyar', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">8. Hona Tha Pyar</li>
+      <li onclick="playSong('Tera Hone Laga Hoon', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">9. Tera Hone Laga Hoon</li>
+      <li onclick="playSong('O Saathi', 'Atif Aslam', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">10. O Saathi</li>
+    </ul>
+  </div>
+
+<div class="artist-view" id="shreya">
+    <h2> Shreya Goshal - Songs</h2>
+    <ul>
+      <li onclick="playSong('Dola Re Dola', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Dola Re Dola</li>
+      <li onclick="playSong('Sunn Raha Hai', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Sunn Raha Hai</li>
+      <li onclick="playSong('Deewani Mastani', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Deewani Mastani</li>
+      <li onclick="playSong('Saibo', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Saibo</li>
+      <li onclick="playSong('Teri Ore', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5.  Teri Ore </li>
+      <li onclick="playSong('Agar Tum Mil Jao', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">6. Agar Tum Mil Jao</li>
+      <li onclick="playSong('Samjhawan', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">7. Samjhawan</li>
+      <li onclick="playSong('Jaadu Hai Nasha Ha', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">8. Jaadu Hai Nasha Ha</li>
+      <li onclick="playSong('Manva Laage', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">9. Manva Laage</li>
+      <li onclick="playSong('Tum kya Mile', 'Shreya Goshal', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">10. Tum kya Mile</li>
+    </ul>
+  </div>
+
+  <div class="artist-view" id="asim">
+    <h2> Asim Azhar - Songs</h2>
+    <ul>
+      <li onclick="playSong('Jo Tu Na Mila', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">1. Jo Tu Na Mila</li>
+      <li onclick="playSong('Tera Woh Pyar', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">2. Tera Woh Pyar</li>
+      <li onclick="playSong('Huling Gabi', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">3. Huling Gabi</li>
+      <li onclick="playSong('Baat ', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">4. Baat </li>
+      <li onclick="playSong('Humraah', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">5. Humraah</li>
+      <li onclick="playSong('Tum Tum', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">6. Tum Tum</li>
+      <li onclick="playSong('Soniye', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">7. Soniye</li>
+      <li onclick="playSong('Ghalat Fehmi', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">8. Ghalat Fehmi</li>
+      <li onclick="playSong('Bematlab', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">9. Bematlab</li>
+      <li onclick="playSong(' Khelta Ja', 'Asim Azhar', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">10.  Khelta Ja</li>
+    </ul>
+  </div>
+  
+  <div class="right-panel">
+    <h3>Now Playing</h3>
+    <img id="albumArt" src="https://thumbs.dreamstime.com/b/icon-song-music-song-369028871.jpg" width="100%">
+    <p id="nowPlayingTitle">Desh mere</p>
+    <p id="nowPlayingArtist">Arijit singh</p>
+
+    <div class="progress">
+      <input type="range" id="progress" min="0" max="100" value="0">
+    </div>
+    <span id="duration">0:00</span>
+  </div>
+
+  <div class="bottom-player">
+    <button id="playPauseButton">▶</button>
+  <button id="volumeButton">🔉</button>
+    
+    <div class="progress">
+      <input type="range" id="progress" min="0" max="100" value="0">
+    </div>
+    <span id="duration">0:00</span>
+  </div>
+
+  <audio id="audio" src=""></audio>
+
+  <script>
+
+    const audio = document.getElementById('audio');
+    const nowPlayingTitle = document.getElementById('nowPlayingTitle');
+    const nowPlayingArtist = document.getElementById('nowPlayingArtist');
+    const progress = document.getElementById('progress');
+    const duration = document.getElementById('duration');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const volumeButton = document.getElementById('volumeButton');
+
+playPauseButton.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playPauseButton.textContent = '⏸';
+  } else {
+    audio.pause();
+    playPauseButton.textContent = '▶';
+  }
+});
+
+const volumeLevels = [
+  { icon: '🔇', level: 0.0 },
+  { icon: '🔈', level: 0.3 },
+  { icon: '🔉', level: 0.6 },
+  { icon: '🔊', level: 1.0 }
+];
+let volumeIndex = 2;
+audio.volume = volumeLevels[volumeIndex].level;
+volumeButton.addEventListener('click', () => {
+  volumeIndex = (volumeIndex + 1) % volumeLevels.length;
+  volumeButton.textContent = volumeLevels[volumeIndex].icon;
+  audio.volume = volumeLevels[volumeIndex].level;
+});
+
+
+    function playSong(title, artist, src) {
+      nowPlayingTitle.textContent = title;
+      nowPlayingArtist.textContent = artist;
+      audio.src = src;
+      audio.play();
+    }
+
+    audio.addEventListener('timeupdate', () => {
+      progress.value = audio.currentTime;
+      duration.textContent = formatTime(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      progress.max = audio.duration;
+    });
+
+    progress.addEventListener('input', () => {
+      audio.currentTime = progress.value;
+    });
+
+    function formatTime(time) {
+      const min = Math.floor(time / 60);
+      const sec = Math.floor(time % 60).toString().padStart(2, '0');
+      return `${min}:${sec}`;
+    }
+    function showArtist(id) {
+      document.querySelectorAll('.main, .artist-view').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
